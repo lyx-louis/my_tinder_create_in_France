@@ -1,0 +1,26 @@
+{
+  "name": "projet-2022-ydn",
+  "version": "1.0.0",
+  "description": "##Introduction",
+  "main": "nodemon index.ts",
+  "dependencies": {
+    "express": "^4.17.3",
+    "mongodb": "^4.4.1",
+    "nodemon": "^2.0.15",
+    "yet": "^0.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EnseirbTelecom/projet-2022-ydn.git"
+  },
+  "author": "Damien Ginesy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EnseirbTelecom/projet-2022-ydn/issues"
+  },
+  "homepage": "https://github.com/EnseirbTelecom/projet-2022-ydn#readme"
+}

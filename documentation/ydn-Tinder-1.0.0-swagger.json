@@ -1,0 +1,246 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "Ceci est une documentation du serveur de notre application Tindeirb.\n",
+    "version" : "1.0.0",
+    "title" : "Tindeirb",
+    "license" : {
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html",
+      "name" : "Apache 2.0"
+    }
+  },
+  "tags" : [ {
+    "name" : "user",
+    "description" : "Everything about your user"
+  }, {
+    "name" : "account",
+    "description" : "Operations about your connexion"
+  } ],
+  "paths" : {
+    "/account/newUser" : {
+      "post" : {
+        "tags" : [ "account" ],
+        "summary" : "Ajout nouvel user",
+        "description" : "Ajout du mail, MDP et de la position de l'user",
+        "operationId" : "newUser",
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "user",
+          "description" : "Created user object",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/user"
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "successful operation"
+          }
+        }
+      }
+    },
+    "/account/login" : {
+      "post" : {
+        "tags" : [ "account" ],
+        "summary" : "Ajouter nouvelle position à l'user lors du login",
+        "description" : "Retrouver le bon user qui se login et ajouter sa position actuelle",
+        "operationId" : "login",
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "token",
+          "description" : "Created user object",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/user"
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "successful operation"
+          }
+        }
+      }
+    },
+    "/user/addMail" : {
+      "post" : {
+        "tags" : [ "user" ],
+        "summary" : "Ajout du mail de l'user",
+        "description" : "Ajout de la description et du prénom de l'user",
+        "operationId" : "addMail",
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "mail",
+          "description" : "L'adresse mail est rajouté à l'user",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/user"
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "successful operation"
+          }
+        }
+      }
+    },
+    "/user/addAge" : {
+      "post" : {
+        "tags" : [ "user" ],
+        "summary" : "Ajout de l'age de l'user",
+        "description" : "Ajout de la description et du prénom de l'user",
+        "operationId" : "addAge",
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "age",
+          "description" : "L'age de l'user est rajouté à l'user",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/user"
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "successful operation"
+          }
+        }
+      }
+    },
+    "/user/recupUsersCards" : {
+      "post" : {
+        "tags" : [ "user" ],
+        "summary" : "Recupérer les cards de l'user",
+        "operationId" : "recupUsersCards",
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "token",
+          "description" : "Le token permet d'identifier l'user pour ensuite récuperer les cards qui lui sont associées",
+          "required" : true,
+          "schema" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/definitions/user"
+            }
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "successful operation"
+          }
+        }
+      }
+    },
+    "/user/addLike" : {
+      "post" : {
+        "tags" : [ "user" ],
+        "summary" : "Ajouter un like",
+        "operationId" : "addLike",
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "token",
+          "description" : "Le token permet d'identifier l'user pour ensuite ajouter dans la base l'user qu'il vient de liker",
+          "required" : true,
+          "schema" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/definitions/user"
+            }
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "successful operation"
+          }
+        }
+      }
+    },
+    "/user/recupUser" : {
+      "get" : {
+        "tags" : [ "user" ],
+        "summary" : "Récupérer les données de l'user",
+        "produces" : [ "application/json", "application/xml" ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/user"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "user" : {
+      "type" : "object",
+      "properties" : {
+        "mail" : {
+          "type" : "string"
+        },
+        "age" : {
+          "type" : "number"
+        },
+        "MDP" : {
+          "type" : "object",
+          "properties" : {
+            "motDePasse" : {
+              "type" : "string"
+            },
+            "key" : {
+              "type" : "string"
+            }
+          }
+        },
+        "image" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "position" : {
+          "type" : "object",
+          "properties" : {
+            "longitude" : {
+              "type" : "number"
+            },
+            "latitude" : {
+              "type" : "number"
+            }
+          }
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "prenom" : {
+          "type" : "string"
+        },
+        "interet" : {
+          "type" : "string"
+        },
+        "sexe" : {
+          "type" : "string"
+        },
+        "like" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "matchs" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      }
+    }
+  },
+  "host" : "virtserver.swaggerhub.com",
+  "basePath" : "/ydn/Tinder/1.0.0",
+  "schemes" : [ "https", "http" ]
+}
